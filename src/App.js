@@ -6,7 +6,7 @@ function App() {
   const [value, setValue] = useState("")
   const [results, setResults]=useState([])
 
-  const fetchImages = (variables)=>{
+  const fetchImages = ()=>{
     fetch(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${value}&orientation=landscape&per_page=16`)
     .then(res=>res.json())
     .then(data => {
