@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import "./App.css";
+// 3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [value, setValue] = useState("")
+  const [results, setResults]=useState([])
 
+  const fetchImages = (variables)=>{
+    fetch(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${value}&orientation=landscape&per_page=16`)
+    .then(res=>res.json())
+    .then(data => {
+      setResults(data.results)
+    })
+  }
+    return (
+      <div className="App">
+        <div className="mydiv">
+          <input type="text" placeholder="Search for photos" value={value} onChange={(e)=>setValue(e.target.value)}/>
+          <button className="search" onClick={()=>fetchImages()}>Search</button>
+        </div>
+        <div className="gallery">
+          {
+            results.map((item)=>{
+              return <img className="item" key={item.id} src={item.urls.regular}/>
+            })
+          }
+        </div>
+        <button id="load">Load more</button>
+      </div>
+    );
+}
 export default App;
