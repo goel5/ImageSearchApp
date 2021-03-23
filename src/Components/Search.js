@@ -1,14 +1,21 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import '../App.css'
 import {connect} from 'react-redux'
-import {fetchImageRequest} from '../redux'
-class Search extends Component {
-    constructor(props) {
-        super(props)
-        this.state={
-            term:""
-        }
-    }
+import {
+    searchImage,
+    fetchImages,
+    setLoading
+  } from '../../actions/searchActions';
+export class Search extends Component {
+    onChange = e => {
+        this.props.searchImage(e.target.value);
+      };
+    
+    onClick = e => {
+        e.preventDefault();
+        this.props.fetchImages(this.props.text);
+        this.props.setLoading();
+      };
     // loadmore(){
     //     fetch(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${this.state.text}&orientation=landscape&per_page=16&page=${this.state.pageno}`)
     //         .then(res => res.json())
@@ -18,8 +25,8 @@ class Search extends Component {
         return (
             <div>
                 <div className='mydiv'>
-                    <input type="text" placeholder="Search for photos" value={this.state.term} onChange={e => this.setState({ term: e.target.value })} />
-                    <button className='search' onClick={()=>this.props.fetchImageRequest}>Search</button>
+                    <input type="text" placeholder="Search for photos" value={this.state.term} onChange={this.onChange} />
+                    <button className='search' onClick={this.onClick}>Search</button>
                 </div>
                 
                 {/* {
@@ -30,18 +37,12 @@ class Search extends Component {
         );
     }
 }
-const mapStateToProps=state=>{
-    return {
-         name:state.name
-
-    }
-}
-const mapDispatchToProps = dispatch=>{
-    return {
-        fetchImageRequest:() => dispatch(fetchImageRequest(this.state.term))
-    }
-}
+const mapStateToProps=state=>({
+    text: state.images.text
+})
 export default connect (
     mapStateToProps,
-    mapDispatchToProps
+    {searchImage,
+    fetchImages,
+    setLoading}
 )(Search)

@@ -13,10 +13,11 @@ export const searchImage = text => dispatch => {
 export const fetchImages = text => dispatch => {
   axios
     .get(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${text}&orientation=landscape&per_page=16&page=1`)
-    .then(response =>
+    .then(res=>res.json())
+    .then(res =>
       dispatch({
         type: FETCH_IMAGES,
-        payload: response.data
+        payload: res.results
       })
     )
     .catch(err => console.log(err));
@@ -27,7 +28,7 @@ export const fetchImages = text => dispatch => {
 //     .get(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${text}&orientation=landscape&per_page=16&page=1`)
 //     .then(response =>
 //       dispatch({
-//         type: FETCH_MOVIE,
+//         type: FETCH_IMAGE,
 //         payload: response.data
 //       })
 //     )

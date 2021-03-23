@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Search from './Components/Search'
 import {Provider} from 'react-redux'
-import {store} from './redux/store'
+import store from './store'
 import Gallery from './Components/Gallery'
 import './App.css'
 class App extends Component {

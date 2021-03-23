@@ -1,16 +1,16 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import '../App.css'
 import Item from './Item'
 import {connect} from 'react-redux'
-class Gallery extends Component {
+export class Gallery extends Component {
     render() {
+        const{images}=this.props;
         return (
             <div id="gallery">
                 {
-                    this.props.imgArray.length > 0?
-                    this.state.imgArray.map(item => {
-                        return (<Item key={item.id} src={item.urls.regular} />);
-                    }):<></>
+                    images.map((item)=>{
+                      return <Item key={item.id} src={item.urls.regular} />
+                    })
                 }
             </div>
         );
@@ -22,11 +22,7 @@ const mapStateToProps=state=>{
          imgArray:state.imgArray
     }
 }
-const mapDispatchToProps = dispatch=>{
-    return {
-    }
-}
 export default connect (
     mapStateToProps,
-    mapDispatchToProps
+    
 )(Gallery)
