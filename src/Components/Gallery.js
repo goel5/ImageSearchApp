@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import '../App.css'
+import store from '../store'
 import Item from './Item'
 import {connect} from 'react-redux'
-export class Gallery extends Component {
+class Gallery extends Component {
     render() {
-        const{images}=this.props;
         let content = '';
-        content = images.Response==='True'?images.map((item)=>{
+        // console.log(store.getState());
+        console.log(this.props.text)
+        content = this.props.images.length>0?this.props.images.map((item)=>{
             return <Item key={item.id} src={item.urls.regular} />}):null;
-            return (<div id="gallery">
+            
+        return (<div id="gallery">
                 {content}
+                {this.props.text}
             </div>)
         // return (
         //     <div id="gallery">
@@ -23,12 +27,5 @@ export class Gallery extends Component {
     }
 }
 
-const mapStateToProps=state=>{
-    return {
-         imgArray:state.imgArray
-    }
-}
-export default connect (
-    mapStateToProps
-    
-)(Gallery)
+const mapStateToProps=(state)=>({images:state.images, text: state.text});
+export default connect(mapStateToProps)(Gallery);

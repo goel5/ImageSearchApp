@@ -25,9 +25,9 @@ export class Search extends Component {
         return (
             <div>
                 <div className='mydiv'>
-                    <input type="text" placeholder="Search for photos" value={this.state.term} onChange={this.onChange} />
+                    <input type="text" placeholder="Search for photos" value={this.props.text} onChange={this.onChange} />
                     <button className='search' onClick={this.onClick}>Search</button>
-                </div>
+                </div><p>sajal</p>
                 
                 {/* {
                     (this.state.images.length>0)?<button id="load" onClick={()=>this.loadmore()}>Loadmore</button>:<></>
@@ -38,7 +38,7 @@ export class Search extends Component {
     }
 }
 const mapStateToProps=state=>({
-    text: state.images.text
+    text: state.text
 })
 export default connect (
     mapStateToProps,

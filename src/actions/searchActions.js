@@ -1,8 +1,6 @@
 import { SEARCH_IMAGE, FETCH_IMAGES, FETCH_IMAGE, LOADING } from './types';
 import axios from 'axios';
 
-
-
 export const searchImage = text => dispatch => {
   dispatch({
     type: SEARCH_IMAGE,
@@ -11,8 +9,8 @@ export const searchImage = text => dispatch => {
 };
 
 export const fetchImages = text => dispatch => {
-  axios
-    .get(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${text}&orientation=landscape&per_page=16&page=1`)
+  
+    fetch(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${text}&orientation=landscape&per_page=16&page=1`)
     .then(res=>res.json())
     .then(res =>
       dispatch({
