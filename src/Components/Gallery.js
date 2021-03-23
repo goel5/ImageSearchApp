@@ -5,15 +5,21 @@ import {connect} from 'react-redux'
 export class Gallery extends Component {
     render() {
         const{images}=this.props;
-        return (
-            <div id="gallery">
-                {
-                    images.map((item)=>{
-                      return <Item key={item.id} src={item.urls.regular} />
-                    })
-                }
-            </div>
-        );
+        let content = '';
+        content = images.Response==='True'?images.map((item)=>{
+            return <Item key={item.id} src={item.urls.regular} />}):null;
+            return (<div id="gallery">
+                {content}
+            </div>)
+        // return (
+        //     <div id="gallery">
+        //         {
+        //             images.map((item)=>{
+        //               return <Item key={item.id} src={item.urls.regular} />
+        //             })
+        //         }
+        //     </div>
+        // );
     }
 }
 
@@ -23,6 +29,6 @@ const mapStateToProps=state=>{
     }
 }
 export default connect (
-    mapStateToProps,
+    mapStateToProps
     
 )(Gallery)

@@ -5,7 +5,7 @@ import {
     searchImage,
     fetchImages,
     setLoading
-  } from '../../actions/searchActions';
+  } from '../actions/searchActions';
 export class Search extends Component {
     onChange = e => {
         this.props.searchImage(e.target.value);
