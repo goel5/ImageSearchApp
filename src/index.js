@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 //
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import rootReducers from './services/reducers/index'
-const store=createStore(rootReducers)
+const thunkMiddleware=require('redux-thunk').default
+const store=createStore(rootReducers,applyMiddleware(thunkMiddleware))
+
 //
 console.log("storeData", store)
 //

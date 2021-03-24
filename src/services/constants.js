@@ -1,2 +1,3 @@
 export const SEARCH_IMAGE="SEARCH_IMAGE"
-export const FETCHED_IMAGES="FETCHED_IMAGES"
+export const FETCH_IMAGES="FETCH_IMAGES"
+export const LOAD_MORE="LOAD_MORE"
