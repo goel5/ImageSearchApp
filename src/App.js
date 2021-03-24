@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import Search from './components/Search'
-import Gallery from './components/Gallery'
+import Search from './Components/Search'
+import Gallery from './Components/Gallery'
 import './App.css'
 class App extends Component {
   render() {
