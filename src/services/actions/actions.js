@@ -1,10 +1,10 @@
 import { SEARCH_IMAGE, FETCH_IMAGES, LOAD_MORE } from '../constants'
 import axios from 'axios'
-export const searchImage = (text) => {
+export const searchImage = (token) => {
     // console.log('searchImage Called', text)
     return {
         type: SEARCH_IMAGE,
-        payload: text,
+        payload: token,
     }
 }
 export const fetchImages=(images)=>{
@@ -21,10 +21,10 @@ export const loadMore=(images)=>{
         payload:images,
     }
 }
-export const fetchedImages = (text) => {
+export const fetchedImages = (token) => {
     return function (dispatch) {
         axios
-        .get(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${text}&orientation=landscape&per_page=16&page=1`)
+        .get(`https://api.unsplash.com/search/photos?client_id=3IvfH2FWSe4PZws1QOxsLtBRpdAlVeGWvuvH3CF2sHc&query=${token}&orientation=landscape&per_page=16&page=1`)
         .then(response => {
             const images = response.data.results
             dispatch(fetchImages(images))

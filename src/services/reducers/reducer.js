@@ -3,6 +3,7 @@ import {SEARCH_IMAGE, FETCH_IMAGES, LOAD_MORE} from '../constants'
 const initialState={
     imgArray:[],
     text:"",
+    token:"",
     pageno:1,
 }
 
@@ -13,14 +14,15 @@ export default function imgItems(state=initialState, action){
             // console.log('reducer :',action.payload )
             return {
                 ...state,
-                text:action.payload,
+                token:action.payload,
             }
         case FETCH_IMAGES:
             // console.log('images: ', action.payload )
             return {
-                ...state,
                 imgArray:action.payload,
-                pageno:state.pageno+1
+                pageno:state.pageno+1,
+                text:state.token,
+                token:''
             }
         case LOAD_MORE:
                 // console.log('images: ', action.payload )

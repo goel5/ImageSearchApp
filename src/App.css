@@ -41,7 +41,11 @@ input{
     margin-right: 3%;
     background: white;
 }
-
+#token{
+    text-align: left;
+    margin-left: 9%;
+    margin-top: 5px;
+}
 #gallery{
     /* border: 2px solid black; */
     margin:20px auto;
