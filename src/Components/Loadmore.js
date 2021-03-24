@@ -9,7 +9,7 @@ class Loadmore extends Component {
     render() {
         return (
             <div>
-                <button id='load' onClick={this.onClick}>load more </button>
+                <button id='load' onClick={this.onClick}>Load more </button>
             </div>
         );
     }
