@@ -1,0 +1,2 @@
+export const SEARCH_IMAGE="SEARCH_IMAGE"
+export const FETCHED_IMAGES="FETCHED_IMAGES"
