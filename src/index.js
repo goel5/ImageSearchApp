@@ -10,7 +10,7 @@ const thunkMiddleware=require('redux-thunk').default
 const store=createStore(rootReducers,applyMiddleware(thunkMiddleware))
 
 //
-console.log("storeData", store)
+// console.log("storeData", store)
 //
 ReactDOM.render(
   <Provider store={store}>

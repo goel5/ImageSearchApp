@@ -12,10 +12,15 @@ class Search extends Component {
         e.preventDefault();
         // console.log('text: ', this.props.text)
         this.props.fetchImageHandler(this.props.token);
-        // console.log('images: ', this.props.images)
+        
     };
 
     render() {
+        //converting string to pascal convention
+        // console.log('images: ', this.props.images.length)
+        let sentence=this.props.text;
+        sentence=(this.props.images.length!==0)?sentence.charAt(0).toUpperCase()+sentence.slice(1).toLowerCase():null
+
         return (
             <div>
                 <div className='mydiv'>
@@ -23,8 +28,7 @@ class Search extends Component {
                     <button className='search' onClick={this.onClick}>Search</button>
                 </div>
                 <div id="token">
-                    <h3>{this.props.text.replace(/(^)[a-z]/g, char=>char.toUpperCase())}</h3>
-                    <p></p>
+                    <h3>{sentence}</h3>
                 </div>
             </div>
         );

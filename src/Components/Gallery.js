@@ -6,7 +6,9 @@ import Loadmore from './Loadmore'
 class Gallery extends Component {
     render() {
         return (
-            <div>
+            <div>{
+                (this.props.isLoaded===true&&this.props.images.length===0)?<h2>Image Not Found!</h2>:null
+                }
                 <div id="gallery">
                     {
                         this.props.images.map((item) => {
@@ -15,7 +17,7 @@ class Gallery extends Component {
                     }
                 </div>
                 {
-                    (this.props.images.length > 15) ? <Loadmore/> : null
+                    (this.props.images.length > 11) ? <Loadmore/> : null
                 }
             </div>
         );
@@ -23,6 +25,7 @@ class Gallery extends Component {
 }
 
 const mapStateToProps = state => ({
-    images: state.imgItems.imgArray
+    images: state.imgItems.imgArray,
+    isLoaded:state.imgItems.isLoaded
 })
 export default connect(mapStateToProps)(Gallery)

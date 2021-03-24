@@ -3,6 +3,5 @@ import imgItems from './reducer'
 
 
 export default combineReducers({
-    imgItems, 
-    
+    imgItems,
 });
